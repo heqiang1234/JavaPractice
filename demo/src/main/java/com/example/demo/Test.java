@@ -107,6 +107,7 @@ public class Test {
 //        int[] numsTemp ={5,7,7,8,8,10};
 //        int times = search(numsTemp,8);
 //        System.out.println(times);
+        int[] arr = new int[2];
         Scanner scanner = new Scanner(System.in);
         int[] array = {6, 2, 4, 8, 9, 5, 7, 3, 1, 10};
         System.out.println("排序之前的数组: " + Arrays.toString(array));
