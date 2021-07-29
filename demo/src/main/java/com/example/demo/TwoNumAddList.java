@@ -68,4 +68,14 @@ public class TwoNumAddList {
             }
             return listResult.next;
         }
+
+    /**
+     * 第二种方法考虑
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode addTwoNumbersTwo(ListNode l1, ListNode l2) {
+
+    }
 }
