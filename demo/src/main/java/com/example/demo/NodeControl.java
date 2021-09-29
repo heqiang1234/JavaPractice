@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Controller.ListNode;
+import com.example.demo.controller.ListNode;
 
 public class NodeControl {
     private ListNode head = null;

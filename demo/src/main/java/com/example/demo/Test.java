@@ -1,12 +1,7 @@
 package com.example.demo;
 
 
-import com.example.demo.Controller.ListNode;
-import com.google.common.base.CaseFormat;
-
-import javax.swing.*;
-import java.io.File;
-import java.lang.reflect.Field;
+import com.example.demo.controller.ListNode;
 
 import java.util.*;
 
