@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+
+@Service
 public interface RedisService {
 
     /**
