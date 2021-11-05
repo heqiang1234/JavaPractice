@@ -30,7 +30,7 @@ import java.util.Stack;
  * 链接：https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Qustion9TwoStackToQueue {
+public class Qustion09TwoStackToQueue {
 
     //想法简单，仅仅将第二个栈当成储存中间值的作用，假设A。B两个栈
     //修改意见，将B栈循环使用，不需要使用完直接清除，可以后续继续判断B栈中是还存在元素，存在则直接取出元素。不需要反复的去将A的元素插入到B中
@@ -39,7 +39,7 @@ public class Qustion9TwoStackToQueue {
     private Stack<Integer> stack1;
     private Stack<Integer> stack2;
 
-    public Qustion9TwoStackToQueue() {
+    public Qustion09TwoStackToQueue() {
         stack1 = new Stack<Integer>();
         stack2 = new Stack<Integer>();
     }
