@@ -37,8 +37,10 @@ public class Question03ReplaceSpaces {
         }
         char[] charRes = new char[length * 3 + 1];
         //遍历字符串，获取空格
-        for (int i = 0,j = 0; i < length; i++,j++) {
-            if(S.charAt(i) == ' ') {
+        //定义结果得长度
+        int j = 0;
+        for (int i = 0; i < length; i++, j++) {
+            if (S.charAt(i) == ' ') {
                 charRes[j] = '%';
                 charRes[++j] = '2';
                 charRes[++j] = '0';
@@ -46,10 +48,16 @@ public class Question03ReplaceSpaces {
                 charRes[j] = S.charAt(i);
             }
         }
-        return String.valueOf(charRes);
+        //定义一个返回结果得数组
+        char[] chars = new char[j];
+        //去除多余得部分
+        for (int i = 0; i < j; i++) {
+            chars[i] = charRes[i];
+        }
+        return String.valueOf(chars);
     }
 
     public static void main(String[] args) {
-        System.out.println(replaceSpaces("Mr John Smith    ",13));
+        System.out.println(replaceSpaces("Mr John Smith    ", 13));
     }
 }
