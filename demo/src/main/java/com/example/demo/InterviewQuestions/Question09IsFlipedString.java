@@ -65,8 +65,47 @@ public class Question09IsFlipedString {
 
     //尝试  子串匹配KMP算法
     public static Boolean isExistKmp(String s1, String s2) {
+        int j = 0;
+        int i = 0;
+        int[] next = initNext(s2);
+        while (i < s1.length() && j < s2.length()) {
+            if (s1.charAt(i) == s2.charAt(j)) {
+                j++;
+                i++;
+            } else {
+                if(j == 0) {
+                    i++;
+                } else {
+                    j = next[i -1] + 1;
+                }
+            }
+        }
+        if (j == s2.length()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        return false;
+    public static int[] initNext(String str) {
+        int[] next = new int[str.length()];
+        next[0] = -1;
+        int j = 0;
+        for (int i = 1; i < str.length(); i++) {
+            j = next[i - 1];
+            while (str.charAt(j + 1) != str.charAt(i) && j >= 0) {
+                j = next[j];
+            }
+            if (str.charAt(i) == str.charAt(j + 1)) {
+                next[i] = j + 1;
+            } else {
+                next[i] = -1;
+            }
+        }
+        for (int i = 0; i < next.length; i++) {
+            System.out.print(next[i] + " ");
+        }
+        return next;
     }
 
 
