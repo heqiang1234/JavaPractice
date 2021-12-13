@@ -1,7 +1,4 @@
-package com.example.demo.InterviewQuestions;/**
- * @author HQ
- * @create 2021/12/4 19:15
- */
+package com.example.demo.InterviewQuestions;
 
 /**
  * @author HQ
@@ -55,7 +52,34 @@ package com.example.demo.InterviewQuestions;/**
  */
 public class Question07Rotate {
 
-    public void rotate(int[][] matrix) {
+    public static void rotate(int[][] matrix) {
+        int n = matrix.length;
+        // 深拷贝 matrix -> tmp
+        int[][] tmp = new int[n][];
+        for (int i = 0; i < n; i++)
+            tmp[i] = matrix[i].clone();
 
+        printMatrix(tmp);
+        // 根据元素旋转公式，遍历修改原矩阵 matrix 的各元素
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[j][n - 1 - i] = tmp[i][j];
+            }
+        }
+       // printMatrix(matrix);
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
+        rotate(matrix);
     }
 }
