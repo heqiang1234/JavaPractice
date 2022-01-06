@@ -15,25 +15,34 @@ public class Question71SimplifyPath {
         char[] res = path.toCharArray();
         Stack<String> stack = new Stack();
         int count = 0;
-        while (count <= res.length) {
+        while (count < res.length) {
             if(res[count] == '/'){
-                StringBuilder str = new StringBuilder(); //定义一个变量来存储路径
-                while (res[count + 1] != '.' && res[count + 1] != '/'){
-                    str.append(res[count]);
+                count++;
+            } else {
+                int index_count = count;
+                while (count < res.length && res[count] != '/'){
                     count++;
                 }
-            } else if(res[count] == '.'){
-                if (res[count + 1] == '.' && res[count + 2] == '/') {
-                }
-                }
-            }
-        }
-        for (int i = 0; i < res.length - 2; i++) {
-            if (res[i] == '.'){
-                if()
-            }
 
+                String tempStr = path.substring(index_count,count);
+                if(tempStr.equals("..") && !stack.isEmpty()){
+                    stack.pop();
+                } else if( !tempStr.equals(".") && !tempStr.equals("..")){
+                    stack.push(tempStr);
+                }
+            }
         }
-        return "/";
+        if (stack.isEmpty()){
+            return "/";
+        }
+        StringBuilder stringBuilder1 = new StringBuilder();
+        for (int i = 0; i < stack.size(); i++) {
+            stringBuilder1.append("/" + stack.get(i));
+        }
+        return stringBuilder1.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(simplifyPath("/home//foo/"));
     }
 }
