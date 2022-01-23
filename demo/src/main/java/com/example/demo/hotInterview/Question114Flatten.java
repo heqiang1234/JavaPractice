@@ -44,7 +44,7 @@ public class Question114Flatten {
         }
     }
 
-    public List<Integer> list;
+    public List<TreeNode> list;
 
     public void flatten(TreeNode root) {
         list = new ArrayList<>();
@@ -53,13 +53,20 @@ public class Question114Flatten {
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
+        for (int i = 1; i < list.size(); i++) {
+            TreeNode prev = list.get(i - 1),curr = list.get(i);
+            prev.left = null;
+            prev.right = curr;
+        }
     }
 
     public void dfsTree(TreeNode node){
-        
-        list.add(node.val);
-        dfsTree(node.left);
-        dfsTree(node.right);
+        if (node != null){
+            list.add(node);
+            dfsTree(node.left);
+            dfsTree(node.right);
+        }
+
     }
 
 

@@ -27,7 +27,7 @@ public class Question543DiameterOfBinaryTree {
     }
 
     public int diameterOfBinaryTree(TreeNode root) {
-        
+        return 0;
     }
 
 }
