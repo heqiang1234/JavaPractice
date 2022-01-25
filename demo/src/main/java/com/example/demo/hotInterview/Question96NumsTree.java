@@ -22,6 +22,6 @@ public class Question96NumsTree {
     }
 
     public int numTrees(int n) {
-
+        return 0;
     }
 }
