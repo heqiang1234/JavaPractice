@@ -9,24 +9,26 @@ package com.example.demo.LeetCode;
 public class Question06Convert {
 
     public static String convert(String s, int numRows) {
-        int len = s.length();
-        StringBuilder str = new StringBuilder();
-        int [][] arr = new int[numRows][]
+        if (numRows < 2) return s;
+        StringBuilder[] str = new StringBuilder[numRows];
         for (int i = 0; i < numRows; i++) {
-            if (i > len) {
-                break;
-            }
-            int j = i;
-            while ( j <= len - 1){
-                str.append(s.charAt(j));
-                j =  j + numRows;
-            }
+            str[i] = new StringBuilder();
         }
-        return str.toString();
+        int index = 0, flag = -1;
+        for (char c : s.toCharArray()) {
+            str[index].append(c);
+            if (index == 0 || index == numRows - 1) flag = -flag;
+            index += flag;
+        }
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < numRows; i++) {
+            res.append(str[i].toString());
+        }
+        return res.toString();
     }
 
 
     public static void main(String[] args) {
-        System.out.println(convert("PAYPALISHIRING", 3).length());
+        System.out.println(convert("PAYPALISHIRING", 3));
     }
 }
