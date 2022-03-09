@@ -86,9 +86,61 @@ public class Question2055PlatesBetweenCandles {
         return count;
     }
 
+    //调整自己的想法
+    public static int[] platesBetweenCandles2(String s, int[][] queries) {
+        HashMap<Integer, Integer> ret = new HashMap<>();
+        int[] res = new int[queries.length];
+        int index = 0;
+        char [] str = s.toCharArray();
+        int len = s.length();
+        int sumStar = 0; //计算星号
+        Boolean startCount = false;//第一次碰到 | 才开始计数
+        for (int i = 0; i < len; i++) {
+            if (str[i] == '|') {
+                ret.put(i, index);
+                index = startCount ? index : 0;
+                startCount = true;
+            } else {
+                ret.put(i, 0);
+                index += startCount ? 1 : 0;
+            }
+        }
+        int left = 0, right = 0;
+        int count = 0;
+        Boolean leftBool, rightBool;
+        for (int i = 0; i < queries.length; i++) {
+            left = queries[i][0];
+            right = queries[i][1];
+            leftBool = false;
+            rightBool = false;
+            while (left <= right) {
+                if (str[left] == '*' && left < len){
+                    left++;
+                } else {
+                    leftBool = true;
+                }
+
+                if (str[right] == '*' && right >= 0){
+                    right--;
+                } else {
+                    rightBool = true;
+                }
+
+                if (leftBool && rightBool){
+                    break;
+                }
+            }
+            if (left < right){
+                res[count] =ret.get(right) - ret.get(left);
+            }
+            count++;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         String s = "***|**|*****|**||**|*";
         int[][] queries = {{4, 5}, {1, 17}, {14, 17}, {5, 11}, {15, 16}};
-        platesBetweenCandles(s, queries);
+        platesBetweenCandles2(s, queries);
     }
 }
